@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vex — A browser built just for you</title>
+  <meta name="description" content="Vex is a fast, private, minimal desktop browser with vertical tabs, a built-in AI agent, ad blocking, workspaces, and a command bar that does everything. Free and open source.">
+  <meta name="theme-color" content="#0c0a07">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vex — A browser built just for you">
+  <meta property="og:description" content="Vertical tabs, a built-in AI agent, ad blocking, workspaces, and a command bar that does everything. Free & open source.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon points='40,12 68,40 40,68 12,40' fill='%23d4a574' fill-opacity='0.4' stroke='%23d4a574' stroke-width='2'/%3E%3Cpath d='M26 38 L40 56 L54 38' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Vex home">
+      <svg class="brand-mark" viewBox="0 0 80 80" aria-hidden="true">
+        <defs>
+          <linearGradient id="navMark" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4a574" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#6b5638" stop-opacity="0.5"/>
+          </linearGradient>
+        </defs>
+        <polygon points="40,12 68,40 40,68 12,40" fill="url(#navMark)" stroke="#d4a574" stroke-width="1.4" stroke-opacity="0.8"/>
+        <polygon points="40,12 68,40 40,40" fill="#d4a574" fill-opacity="0.4"/>
+        <polygon points="40,12 12,40 40,40" fill="#d4a574" fill-opacity="0.55"/>
+        <path d="M26 38 L40 56 L54 38" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-name">Vex</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#shortcuts">Shortcuts</a>
+      <a href="https://github.com/0xmortuex/Vex" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+
+    <a class="btn btn-sm" href="#download">Download</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Free &amp; open source · Windows</span>
+          <h1>A browser built<br><span class="grad">just for you.</span></h1>
+          <p class="lede">
+            Vertical tabs, a built-in AI agent, ad &amp; tracker blocking, workspaces,
+            and a command bar that does everything — in a fast, private, no-bloat
+            desktop browser.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-lg" id="download-primary" href="https://github.com/0xmortuex/Vex/releases/latest/download/Vex-Setup.exe">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-ico"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span id="download-label">Download for Windows</span>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="https://github.com/0xmortuex/Vex" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+          <p class="hero-meta" id="hero-meta">Windows 10/11 · 64-bit · MIT licensed</p>
+        </div>
+
+        <!-- CSS mockup of the Vex window -->
+        <div class="mockup" aria-hidden="true">
+          <div class="mockup-win">
+            <div class="mockup-rail">
+              <span class="rail-dot d1"></span>
+              <span class="rail-tab active"></span>
+              <span class="rail-tab"></span>
+              <span class="rail-tab"></span>
+              <span class="rail-group"></span>
+              <span class="rail-tab sub"></span>
+              <span class="rail-tab sub"></span>
+              <span class="rail-plus">+</span>
+            </div>
+            <div class="mockup-main">
+              <div class="mockup-bar">
+                <span class="bar-btn"></span><span class="bar-btn"></span>
+                <span class="bar-url">vex://start</span>
+              </div>
+              <div class="mockup-page">
+                <div class="page-clock">9:41</div>
+                <div class="page-greet">Good evening</div>
+                <div class="page-search"></div>
+                <div class="page-grid">
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURE STRIP ===== -->
+    <section class="strip">
+      <div class="strip-item"><strong>Vertical tabs</strong><span>Arc-style sidebar with groups</span></div>
+      <div class="strip-item"><strong>Built-in AI</strong><span>Summarize, ask, automate</span></div>
+      <div class="strip-item"><strong>Ad blocker</strong><span>Faster, cleaner pages</span></div>
+      <div class="strip-item"><strong>Ctrl + K</strong><span>Command bar for everything</span></div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+      <div class="section-head">
+        <span class="kicker">Everything you actually use</span>
+        <h2>One browser, fully yours</h2>
+        <p>No accounts, no telemetry, no bloat — just the features that make browsing faster and calmer.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="16" rx="1.5"/><path d="M12 7h8M12 12h8M12 17h5"/></svg>
+          </div>
+          <h3>Vertical tabs &amp; groups</h3>
+          <p>A clean sidebar with drag-to-reorder tabs and collapsible, color-coded groups that keep dozens of tabs sane.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4c1.7.5 3 2 3 4a4 4 0 0 1-1 2.6A4 4 0 0 1 15 20H9a4 4 0 0 1-3-6.4A4 4 0 0 1 5 11c0-2 1.3-3.5 3-4a4 4 0 0 1 4-4Z"/><path d="M9 21h6"/></svg>
+          </div>
+          <h3>Built-in AI agent</h3>
+          <p>Summarize pages, ask questions about what you're reading, translate, and let it click and type to finish tasks for you.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3Z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Ad &amp; tracker blocking</h3>
+          <p>Pattern-based blocking is on by default, so pages load faster and trackers don't follow you around the web.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10l2.5 2L7 14M13 14h4"/></svg>
+          </div>
+          <h3>Command bar</h3>
+          <p>Hit <kbd>Ctrl</kbd>+<kbd>K</kbd> to search, navigate, switch panels, or run any action — without lifting your hands off the keyboard.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>Workspaces &amp; sessions</h3>
+          <p>Switch between Work, School, Dev and Personal contexts, and save or restore named sets of tabs whenever you need them.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><path d="M3 13c2-5 5.5-7 9-7s7 2 9 7c-2 5-5.5 7-9 7s-7-2-9-7Z"/><circle cx="12" cy="13" r="2.5"/></svg>
+          </div>
+          <h3>Tab sleep &amp; memory</h3>
+          <p>Inactive tabs auto-sleep to near-zero RAM, with a memory panel to wake, sleep, or close them on demand.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14"/></svg>
+          </div>
+          <h3>Split screen &amp; PiP</h3>
+          <p>View two tabs side by side, or pop any video into a floating always-on-top window while you keep working.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9Z"/></svg>
+          </div>
+          <h3>Themes &amp; reading mode</h3>
+          <p>Seven presets plus a custom color editor, a distraction-free reading mode, per-site zoom, and page translation.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
+          </div>
+          <h3>Encrypted sync</h3>
+          <p>Optional end-to-end encrypted sync keeps tabs, settings and history across devices — your key never leaves your machine.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== DOWNLOAD ===== -->
+    <section class="download" id="download">
+      <div class="download-card">
+        <svg class="dl-mark" viewBox="0 0 80 80" aria-hidden="true">
+          <defs>
+            <linearGradient id="dlMark" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#d4a574" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#6b5638" stop-opacity="0.55"/>
+            </linearGradient>
+          </defs>
+          <polygon points="40,12 68,40 40,68 12,40" fill="url(#dlMark)" stroke="#d4a574" stroke-width="1.4" stroke-opacity="0.85"/>
+          <polygon points="40,12 68,40 40,40" fill="#d4a574" fill-opacity="0.42"/>
+          <polygon points="40,12 12,40 40,40" fill="#d4a574" fill-opacity="0.58"/>
+          <path d="M26 38 L40 56 L54 38" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2>Get Vex</h2>
+        <p>Free, open source, and yours to customize. Download the installer and you're browsing in under a minute.</p>
+        <a class="btn btn-lg" href="https://github.com/0xmortuex/Vex/releases/latest/download/Vex-Setup.exe">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-ico"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download for Windows
+        </a>
+        <div class="dl-sub">
+          <span>Windows 10/11 · 64-bit</span>
+          <span class="dot">·</span>
+          <a href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener">All releases</a>
+        </div>
+        <p class="dl-note">
+          Vex is an independent app, so Windows SmartScreen may show a warning on first run.
+          Click <strong>More info → Run anyway</strong> to continue.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== SHORTCUTS ===== -->
+    <section class="shortcuts" id="shortcuts">
+      <div class="section-head">
+        <span class="kicker">Keyboard-first</span>
+        <h2>Fly through it</h2>
+        <p>The essentials you'll use every day.</p>
+      </div>
+      <div class="kbd-grid">
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span><span>Command bar</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>T</kbd></span><span>New tab</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>T</kbd></span><span>Reopen closed tab</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>F</kbd></span><span>Find in page</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>S</kbd></span><span>Split screen</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd></span><span>Picture-in-picture</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>N</kbd></span><span>Notes</span></div>
+        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>Z</kbd></span><span>Sleep current tab</span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="brand" href="#top" aria-label="Vex home">
+        <svg class="brand-mark" viewBox="0 0 80 80" aria-hidden="true">
+          <polygon points="40,12 68,40 40,68 12,40" fill="#d4a574" fill-opacity="0.4" stroke="#d4a574" stroke-width="1.4" stroke-opacity="0.8"/>
+          <path d="M26 38 L40 56 L54 38" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">Vex</span>
+      </a>
+      <p class="footer-tag">A browser built just for you.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://github.com/0xmortuex/Vex" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener">Releases</a>
+        <a href="https://github.com/0xmortuex/Vex/issues" target="_blank" rel="noopener">Report an issue</a>
+      </nav>
+      <p class="footer-legal">Built by <strong>0xmortuex</strong> · MIT License · <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
