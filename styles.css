@@ -288,7 +288,7 @@ kbd {
 .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 48px 24px; text-align: center; }
 .footer .brand { justify-content: center; margin-bottom: 8px; }
 .footer-tag { color: var(--text-dim); margin-bottom: 22px; }
-.footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 22px; font-size: 15px; color: var(--text-dim); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: center; margin-bottom: 22px; font-size: 15px; color: var(--text-dim); }
 .footer-links a:hover { color: var(--gold); }
 .footer-legal { font-size: 13.5px; color: var(--text-muted); }
 .footer-legal strong { color: var(--text-dim); }
