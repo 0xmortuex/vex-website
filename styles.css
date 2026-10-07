@@ -129,7 +129,11 @@ kbd {
 /* ===== Hero ===== */
 .hero { position: relative; max-width: var(--maxw); margin: 0 auto; padding: 56px 24px 40px; }
 .hero-glow {
-  position: absolute; top: -120px; right: -60px; width: 520px; height: 520px;
+  /* Never past the viewport's right edge: at right:-60px the glow made every
+     phone/tablet page 60px wider than the screen, so it panned sideways
+     (body's overflow-x:hidden does not stop touch panning). On wide screens
+     there is room, and -60px still applies. */
+  position: absolute; top: -120px; right: max(-60px, calc((100% - 100vw) / 2)); width: 520px; height: 520px;
   background: radial-gradient(circle, rgba(212, 165, 116, 0.16), transparent 65%);
   filter: blur(20px); pointer-events: none;
 }
