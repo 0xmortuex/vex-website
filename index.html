@@ -4,347 +4,237 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vex — A browser built just for you</title>
-  <meta name="description" content="Vex is a fast, private, minimal desktop browser with vertical tabs, a built-in AI agent, ad blocking, workspaces, and a command bar that does everything. Free and open source.">
-  <meta name="theme-color" content="#0c0a07">
-
-  <!-- Open Graph -->
+  <meta name="description" content="Vex is a fast, private Windows browser you can rearrange to the pixel: switchable looks, a built-in AI helper, real streaming, Tor, ad blocking, and the whole app in English or Turkish. Free and open source.">
+  <meta name="theme-color" content="#eef1f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#10151f" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Vex — A browser built just for you">
-  <meta property="og:description" content="Vertical tabs, a built-in AI agent, ad blocking, workspaces, and a command bar that does everything. Free & open source.">
+  <meta property="og:description" content="Pick how it looks, where everything sits and what it does. Free and open source, for Windows.">
   <meta property="og:type" content="website">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon points='40,12 68,40 40,68 12,40' fill='%23d4a574' fill-opacity='0.4' stroke='%23d4a574' stroke-width='2'/%3E%3Cpath d='M26 38 L40 56 L54 38' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon points='40,12 68,40 40,68 12,40' fill='%23b8793a' fill-opacity='0.5' stroke='%23b8793a' stroke-width='2'/%3E%3Cpath d='M26 38 L40 56 L54 38' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#main" data-i="skip">Skip to the content</a>
 
-  <!-- ===== NAV ===== -->
   <header class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="Vex home">
+    <a class="brand" href="#top" aria-label="Vex">
       <svg class="brand-mark" viewBox="0 0 80 80" aria-hidden="true">
-        <defs>
-          <linearGradient id="navMark" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#d4a574" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#6b5638" stop-opacity="0.5"/>
-          </linearGradient>
-        </defs>
-        <polygon points="40,12 68,40 40,68 12,40" fill="url(#navMark)" stroke="#d4a574" stroke-width="1.4" stroke-opacity="0.8"/>
-        <polygon points="40,12 68,40 40,40" fill="#d4a574" fill-opacity="0.4"/>
-        <polygon points="40,12 12,40 40,40" fill="#d4a574" fill-opacity="0.55"/>
-        <path d="M26 38 L40 56 L54 38" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon points="40,12 68,40 40,68 12,40" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M26 38 L40 56 L54 38" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span class="brand-name">Vex</span>
+      <span>Vex</span>
     </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#features">Features</a>
-      <a href="#whats-new">New</a>
-      <a href="#shortcuts">Shortcuts</a>
-      <a href="https://github.com/0xmortuex/Vex" target="_blank" rel="noopener">GitHub</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#inside" data-i="nav.inside">What's inside</a>
+      <a href="#moving" data-i="nav.moving">Moving in</a>
+      <a href="#new" data-i="nav.new">What's new</a>
+      <a href="#questions" data-i="nav.questions">Questions</a>
     </nav>
-
-    <a class="btn btn-sm" href="#download">Download</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="tr" aria-pressed="false">Türkçe</button>
+    </div>
+    <a class="btn btn-sm" href="#download" data-i="nav.download">Download</a>
   </header>
 
-  <main id="top">
+  <main id="main">
+    <!-- HERO: a working window -->
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <h1 data-i="hero.h1">A browser built just for you.</h1>
+        <p class="lede" data-i="hero.lede">Pick how it looks, where everything sits and what it does. Vex is a fast, private Windows browser with an AI helper that can work on your tabs, real streaming, and nothing sent anywhere you did not choose.</p>
+        <div class="cta">
+          <a class="btn btn-lg" id="download-primary" href="https://github.com/0xmortuex/Vex/releases/latest/download/Vex-Setup.exe">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i="cta.download">Download for Windows</span>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#inside" data-i="cta.inside">See what is inside</a>
+        </div>
+        <p class="meta" id="hero-meta" data-i="hero.meta">Windows 10 and 11, 64-bit. Free, MIT licence.</p>
+      </div>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <span class="eyebrow">Free &amp; open source · Windows</span>
-          <h1>A browser built<br><span class="grad">just for you.</span></h1>
-          <p class="lede">
-            Vertical tabs, on-device &amp; cloud AI, privacy hardening, ad &amp; tracker
-            blocking, and a command bar that does everything — in a fast, private,
-            no-bloat desktop browser.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-lg" id="download-primary" href="https://github.com/0xmortuex/Vex/releases/latest/download/Vex-Setup.exe">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-ico"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span id="download-label">Download for Windows</span>
-            </a>
-            <a class="btn btn-ghost btn-lg" href="https://github.com/0xmortuex/Vex" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
-          <p class="hero-meta" id="hero-meta">Windows 10/11 · 64-bit · MIT licensed</p>
+      <div class="stage">
+        <div class="picker" role="group" aria-labelledby="look-label">
+          <span id="look-label" data-i="demo.look">Try a look</span>
+          <button type="button" data-look="firefox" aria-pressed="true">Firefox</button>
+          <button type="button" data-look="chrome" aria-pressed="false">Chrome</button>
+          <button type="button" data-look="safari" aria-pressed="false">Safari</button>
+          <button type="button" data-look="glass" aria-pressed="false">Glass</button>
+          <button type="button" data-look="classic" aria-pressed="false" data-i="demo.classic">Classic</button>
         </div>
 
-        <!-- CSS mockup of the Vex window -->
-        <div class="mockup" aria-hidden="true">
-          <div class="mockup-win">
-            <div class="mockup-rail">
-              <span class="rail-dot d1"></span>
-              <span class="rail-tab active"></span>
-              <span class="rail-tab"></span>
-              <span class="rail-tab"></span>
-              <span class="rail-group"></span>
-              <span class="rail-tab sub"></span>
-              <span class="rail-tab sub"></span>
-              <span class="rail-plus">+</span>
-            </div>
-            <div class="mockup-main">
-              <div class="mockup-bar">
-                <span class="bar-btn"></span><span class="bar-btn"></span>
-                <span class="bar-url">vex://start</span>
-              </div>
-              <div class="mockup-page">
-                <div class="page-clock">9:41</div>
-                <div class="page-greet">Good evening</div>
-                <div class="page-search"></div>
-                <div class="page-grid">
-                  <span></span><span></span><span></span><span></span>
-                  <span></span><span></span><span></span><span></span>
-                </div>
-              </div>
+        <div class="win" id="win" data-look="firefox" role="img" aria-label="A Vex window showing its new tab page">
+          <div class="w-tabs">
+            <span class="w-tab on"><i></i><b data-i="demo.newtab">New Tab</b></span>
+            <span class="w-tab"><i></i><b>Mail</b></span>
+            <span class="w-tab"><i></i><b>Docs</b></span>
+            <span class="w-plus">+</span>
+          </div>
+          <div class="w-bar">
+            <span class="w-nav"><u></u><u></u><u></u></span>
+            <span class="w-url" data-i="demo.url">Search or enter address</span>
+            <span class="w-tools"><u></u><u></u><s>AI</s></span>
+          </div>
+          <div class="w-body">
+            <div class="w-side"><u class="on"></u><u></u><u></u><u></u><u></u></div>
+            <div class="w-page">
+              <div class="w-clock">18:42</div>
+              <div class="w-greet" data-i="demo.greet">Good evening</div>
+              <div class="w-search" data-i="demo.search">Search with Google</div>
+              <div class="w-quick"><u></u><u></u><u></u><u></u><u></u><u></u></div>
             </div>
           </div>
         </div>
+        <p class="caption" data-i="demo.caption">Every part of it moves: the tabs, the toolbar and the sidebar are yours to place.</p>
       </div>
     </section>
 
-    <!-- ===== FEATURE STRIP ===== -->
-    <section class="strip">
-      <div class="strip-item"><strong>Vertical tabs</strong><span>Arc-style sidebar with groups</span></div>
-      <div class="strip-item"><strong>Built-in AI</strong><span>Summarize, ask, automate</span></div>
-      <div class="strip-item"><strong>Ad blocker</strong><span>Faster, cleaner pages</span></div>
-      <div class="strip-item"><strong>Ctrl + K</strong><span>Command bar for everything</span></div>
+    <!-- MOVING IN: a real sequence -->
+    <section class="band" id="moving">
+      <div class="head">
+        <h2 data-i="move.h2">Moving in takes about five minutes</h2>
+        <p data-i="move.p">Nothing to sign up for. Setup does the heavy lifting and every step can be skipped.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3 data-i="move.1.h">Install</h3>
+          <p data-i="move.1.p">Run the installer. There is no account to make.</p>
+        </li>
+        <li>
+          <h3 data-i="move.2.h">Bring your things over</h3>
+          <p data-i="move.2.p">Setup offers your bookmarks and history from Chrome, Edge, Brave, Firefox, Opera and Opera GX. Passwords come from the file you export from that browser; Vex never opens another browser's encrypted stores.</p>
+        </li>
+        <li>
+          <h3 data-i="move.3.h">Make it yours</h3>
+          <p data-i="move.3.p">Choose a look, then drag the toolbar and the sidebar buttons where you want them. All of it can be changed later in Settings.</p>
+        </li>
+      </ol>
+      <p class="note" data-i="move.note">Websites will still ask you to sign in once: browsers keep their signed-in sessions to themselves. With your passwords imported, that is one click.</p>
     </section>
 
-    <!-- ===== FEATURES ===== -->
-    <section class="features" id="features">
-      <div class="section-head">
-        <span class="kicker">Everything you actually use</span>
-        <h2>One browser, fully yours</h2>
-        <p>No accounts, no telemetry, no bloat — just the features that make browsing faster and calmer.</p>
+    <!-- INSIDE: by what you are trying to do -->
+    <section class="inside" id="inside">
+      <div class="head">
+        <h2 data-i="in.h2">What is inside, by what you want to do</h2>
+        <p data-i="in.p">Hundreds of features, all in the browser. None of it is a paid add-on.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Features">
+        <button role="tab" id="t-browse" aria-controls="p-browse" aria-selected="true" data-i="in.browse">Browse</button>
+        <button role="tab" id="t-private" aria-controls="p-private" aria-selected="false" tabindex="-1" data-i="in.private">Stay private</button>
+        <button role="tab" id="t-ai" aria-controls="p-ai" aria-selected="false" tabindex="-1" data-i="in.ai">Ask the AI</button>
+        <button role="tab" id="t-watch" aria-controls="p-watch" aria-selected="false" tabindex="-1" data-i="in.watch">Watch and listen</button>
+        <button role="tab" id="t-do" aria-controls="p-do" aria-selected="false" tabindex="-1" data-i="in.do">Get things done</button>
       </div>
 
-      <div class="feature-grid">
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="16" rx="1.5"/><path d="M12 7h8M12 12h8M12 17h5"/></svg>
-          </div>
-          <h3>Vertical tabs &amp; groups</h3>
-          <p>A clean sidebar with drag-to-reorder tabs and collapsible, color-coded groups that keep dozens of tabs sane.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4c1.7.5 3 2 3 4a4 4 0 0 1-1 2.6A4 4 0 0 1 15 20H9a4 4 0 0 1-3-6.4A4 4 0 0 1 5 11c0-2 1.3-3.5 3-4a4 4 0 0 1 4-4Z"/><path d="M9 21h6"/></svg>
-          </div>
-          <h3>Built-in AI agent</h3>
-          <p>Summarize pages, ask questions about what you're reading, translate, and let it click and type to finish tasks for you.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3Z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Ad &amp; tracker blocking</h3>
-          <p>The full EasyList and EasyPrivacy filter engine, network and cosmetic, is on by default, so pages load faster and trackers don't follow you around the web.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10l2.5 2L7 14M13 14h4"/></svg>
-          </div>
-          <h3>Command bar</h3>
-          <p>Hit <kbd>Ctrl</kbd>+<kbd>K</kbd> to search, navigate, switch panels, or run any action — without lifting your hands off the keyboard.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          </div>
-          <h3>Workspaces &amp; sessions</h3>
-          <p>Switch between Work, School, Dev and Personal contexts, and save or restore named sets of tabs whenever you need them.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M3 13c2-5 5.5-7 9-7s7 2 9 7c-2 5-5.5 7-9 7s-7-2-9-7Z"/><circle cx="12" cy="13" r="2.5"/></svg>
-          </div>
-          <h3>Tab sleep &amp; memory</h3>
-          <p>Inactive tabs auto-sleep to near-zero RAM, with a memory panel to wake, sleep, or close them on demand.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14"/></svg>
-          </div>
-          <h3>Split screen &amp; PiP</h3>
-          <p>View two tabs side by side, or pop any video into a floating always-on-top window while you keep working.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9Z"/></svg>
-          </div>
-          <h3>Focus, gestures &amp; more</h3>
-          <p>Focus sessions that block distractions, mouse gestures, bookmarks, an RSS reader, read-aloud, container tabs, and themes galore.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
-          </div>
-          <h3>Sync, handoff &amp; passwords</h3>
-          <p>End-to-end encrypted sync, send tabs between your Vex computers, and a password manager locked with your OS keychain.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2Z"/></svg>
-          </div>
-          <h3>Peek, Boosts &amp; Skills</h3>
-          <p>Shift+click links to preview them in a floating overlay, zap annoying elements off any site forever, and run saved AI commands on any page.</p>
-        </article>
+      <div class="panel" role="tabpanel" id="p-browse" aria-labelledby="t-browse">
+        <ul class="facts">
+          <li><strong data-i="b.1.h">Tabs where you want them</strong><span data-i="b.1.p">On top like Chrome, down the side, or in a frosted Glass look. Groups, sleeping tabs that give their memory back, split screen with up to four pages, Picture-in-Picture.</span></li>
+          <li><strong data-i="b.2.h">One bar for everything</strong><span data-i="b.2.p">Press Ctrl+K to open a page, search, switch a panel or run any command, ranked by what you use.</span></li>
+          <li><strong data-i="b.3.h">Looks you can switch</strong><span data-i="b.3.p">Firefox, Chrome, Safari, Glass and Classic, with themes, textures, fonts and a layout you can drag around.</span></li>
+          <li><strong data-i="b.4.h">Apps in the sidebar</strong><span data-i="b.4.p">Discord, WhatsApp, Spotify, GitHub and any site you pin, each in its own session with unread badges.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-private" aria-labelledby="t-private" hidden>
+        <ul class="facts">
+          <li><strong data-i="p.1.h">Blocking that is on from the start</strong><span data-i="p.1.p">Ads and trackers, in the network and on the page, plus fingerprint protection, DNS over HTTPS and HTTPS-only mode.</span></li>
+          <li><strong data-i="p.2.h">Tor in one click</strong><span data-i="p.2.p">Vex fetches and runs the official Tor bundle itself. Nothing else to install.</span></li>
+          <li><strong data-i="p.3.h">Past a blocked site</strong><span data-i="p.3.p">A built-in bypass for DNS and SNI blocking, with no VPN and no administrator rights.</span></li>
+          <li><strong data-i="p.4.h">Nothing phones home</strong><span data-i="p.4.p">No analytics and no telemetry. A plain document lists every request Vex makes and why.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-ai" aria-labelledby="t-ai" hidden>
+        <ul class="facts">
+          <li><strong data-i="a.1.h">Say it in plain words</strong><span data-i="a.1.p">“Close all the YouTube tabs.” “Group my GitHub tabs.” Common commands are understood on your computer, with no network.</span></li>
+          <li><strong data-i="a.2.h">Ask about what you are reading</strong><span data-i="a.2.p">Summarize, explain or translate a page or a selection, and search everything you have read by meaning.</span></li>
+          <li><strong data-i="a.3.h">You choose where it runs</strong><span data-i="a.3.p">In the cloud on your own Cloudflare Worker, on your own machine with Ollama, or fully inside the browser. It stays off until you set it up.</span></li>
+          <li><strong data-i="a.4.h">It asks before it acts</strong><span data-i="a.4.p">The agent shows its plan, asks before anything it cannot undo, and Pause stops it between steps.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-watch" aria-labelledby="t-watch" hidden>
+        <ul class="facts">
+          <li><strong data-i="w.1.h">Streaming that plays</strong><span data-i="w.1.p">Netflix, Spotify, Prime Video and Disney+ work, thanks to Widevine in the signed installer.</span></li>
+          <li><strong data-i="w.2.h">Screen share with real controls</strong><span data-i="w.2.p">Pick the window, the resolution up to 1440p, the frame rate, and whether to share sound.</span></li>
+          <li><strong data-i="w.3.h">One volume for everything</strong><span data-i="w.3.p">A single slider from 0 to 500 percent across every tab, and a hub for what is playing.</span></li>
+          <li><strong data-i="w.4.h">Out of a game's way</strong><span data-i="w.4.p">When a full-screen game starts, Vex frees the graphics card and holds back its background work.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-do" aria-labelledby="t-do" hidden>
+        <ul class="facts">
+          <li><strong data-i="d.1.h">A toolbox of small tools</strong><span data-i="d.1.p">Hundreds of calculators, converters and formatters, with the ones for your job at the top.</span></li>
+          <li><strong data-i="d.2.h">Notes, reminders, focus</strong><span data-i="d.2.p">Sticky notes on a page, reminders that wake your PC, and focus sessions that block distractions.</span></li>
+          <li><strong data-i="d.3.h">Sign-ins that just work</strong><span data-i="d.3.p">An encrypted password vault, two-factor codes that fill themselves in, and passkeys.</span></li>
+          <li><strong data-i="d.4.h">A Vex for each person</strong><span data-i="d.4.p">Profiles with their own tabs, bookmarks, passwords and cookies, open side by side.</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===== NEW IN 2.36 ===== -->
-    <section class="features" id="whats-new">
-      <div class="section-head">
-        <span class="kicker">New in 2.34 &ndash; 2.36</span>
-        <h2>Room for everyone, and a clean move in</h2>
-        <p>Separate profiles for everyone on the PC, your bookmarks and history brought over from your old browser, extensions straight from the Chrome Web Store, and updates that install themselves safely.</p>
-      </div>
-
-      <div class="feature-grid">
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c3 .2 5.5 2.4 5.5 5.8"/></svg>
-          </div>
-          <h3>Profiles</h3>
-          <p>A separate Vex for work, school or anyone else on the PC. Each profile has its own <strong>tabs, bookmarks, history, passwords, extensions, sync account and cookies</strong>, and runs in its own window, so two can be open at once.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>
-          </div>
-          <h3>Import from your old browser</h3>
-          <p>Bring your <strong>bookmarks (folders and all) and history</strong> over from Chrome, Edge, Brave or Firefox on this PC, see what will be added, and undo it if you change your mind. Passwords come from a file you export yourself &mdash; Vex never reads another browser&rsquo;s saved passwords.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M17 13v8M13 17h8"/></svg>
-          </div>
-          <h3>Chrome Web Store extensions</h3>
-          <p>Open an extension&rsquo;s Web Store page and click <strong>Add to Vex</strong>. Vex fetches it from Google&rsquo;s own update server and installs it only when the developer&rsquo;s and the Web Store&rsquo;s <strong>signatures check out</strong>.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/><path d="M12 8v5l3 2"/></svg>
-          </div>
-          <h3>Updates that install themselves</h3>
-          <p>Vex downloads the new version itself, checks it against the release&rsquo;s <strong>SHA-512</strong> before running it, fetches <strong>only the parts that changed</strong> when it can, and saves a backup of your profile right before installing.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3Z"/><path d="M9.5 12.5l1.8 1.8 3.5-3.6"/></svg>
-          </div>
-          <h3>Privacy by default</h3>
-          <p>What you type goes only to <strong>the search engine you chose</strong>, never from a private window or Tor tab. The New Tab weather no longer looks you up by IP, setup has a <strong>Privacy choices</strong> step, and the startup update check can be turned off.</p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-ico">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/><path d="M8 9h8M8 13h5"/></svg>
-          </div>
-          <h3>A page&rsquo;s question stays in its tab</h3>
-          <p>An <strong>alert, confirm or prompt</strong> from a page or a sidebar panel now shows over that tab only, instead of freezing the whole window &mdash; and if the window ever stops answering, Vex offers to reload it.</p>
-        </article>
+    <!-- LANGUAGE -->
+    <section class="band" id="language">
+      <div class="head">
+        <h2 data-i="tr.h2">All of Vex speaks Turkish</h2>
+        <p data-i="tr.p">Choose Türkçe in setup and the whole app follows: Settings, the feature library with its how-to steps, error messages, the Windows dialogs and the release notes. English stays the default, and Vex never switches language by itself.</p>
       </div>
     </section>
 
-    <!-- ===== DOWNLOAD ===== -->
-    <section class="download" id="download">
-      <div class="download-card">
-        <svg class="dl-mark" viewBox="0 0 80 80" aria-hidden="true">
-          <defs>
-            <linearGradient id="dlMark" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#d4a574" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#6b5638" stop-opacity="0.55"/>
-            </linearGradient>
-          </defs>
-          <polygon points="40,12 68,40 40,68 12,40" fill="url(#dlMark)" stroke="#d4a574" stroke-width="1.4" stroke-opacity="0.85"/>
-          <polygon points="40,12 68,40 40,40" fill="#d4a574" fill-opacity="0.42"/>
-          <polygon points="40,12 12,40 40,40" fill="#d4a574" fill-opacity="0.58"/>
-          <path d="M26 38 L40 56 L54 38" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h2>Get Vex</h2>
-        <p>Free, open source, and yours to customize. Download the installer and you're browsing in under a minute.</p>
+    <!-- WHAT'S NEW: read from the latest release -->
+    <section class="band" id="new" aria-live="polite">
+      <div class="head">
+        <h2 data-i="new.h2">What's new</h2>
+        <p id="new-sub" data-i="new.loading">Reading the latest release…</p>
+      </div>
+      <ul class="facts" id="new-list"></ul>
+      <p class="note"><a id="new-link" href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener" data-i="new.all">Every release and its notes</a></p>
+    </section>
+
+    <!-- QUESTIONS -->
+    <section class="band" id="questions">
+      <div class="head"><h2 data-i="q.h2">Questions</h2></div>
+      <div class="qa">
+        <details><summary data-i="q.1.q">Is it free?</summary><p data-i="q.1.a">Yes. Vex is open source under the MIT licence, and nothing in it is a paid add-on.</p></details>
+        <details><summary data-i="q.2.q">Does it run on Mac or Linux?</summary><p data-i="q.2.a">Not yet. Vex is for Windows 10 and 11, 64-bit.</p></details>
+        <details><summary data-i="q.3.q">Does Netflix work?</summary><p data-i="q.3.a">Yes, in the signed installer from the Releases page. Widevine, which streaming sites need, is only in that build.</p></details>
+        <details><summary data-i="q.4.q">Windows shows a warning when I run the installer.</summary><p data-i="q.4.a">Vex is an independent app, so SmartScreen may not know it yet. Choose More info, then Run anyway.</p></details>
+        <details><summary data-i="q.5.q">What does Vex send, and to whom?</summary><p data-i="q.5.a">No analytics and no telemetry. Update checks, filter lists and anything you switch on, such as AI or sync, make requests; the privacy document lists each one.</p></details>
+        <details><summary data-i="q.6.q">Do I need an AI account?</summary><p data-i="q.6.a">No. The AI helper is optional and off until you connect your own Worker, a local Ollama model, or the on-device model.</p></details>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="get" id="download">
+      <div>
+        <h2 data-i="get.h2">Get Vex</h2>
+        <p data-i="get.p">Download the installer and you are browsing in a minute.</p>
+      </div>
+      <div class="get-act">
         <a class="btn btn-lg" href="https://github.com/0xmortuex/Vex/releases/latest/download/Vex-Setup.exe">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-ico"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Download for Windows
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i="cta.download">Download for Windows</span>
         </a>
-        <div class="dl-sub">
-          <span>Windows 10/11 · 64-bit</span>
-          <span class="dot">·</span>
-          <span>Latest: v37.26.6</span>
-          <span class="dot">·</span>
-          <a href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener">All releases</a>
-        </div>
-        <p class="dl-note">
-          Vex is an independent app, so Windows SmartScreen may show a warning on first run.
-          Click <strong>More info → Run anyway</strong> to continue.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== SHORTCUTS ===== -->
-    <section class="shortcuts" id="shortcuts">
-      <div class="section-head">
-        <span class="kicker">Keyboard-first</span>
-        <h2>Fly through it</h2>
-        <p>The essentials you'll use every day.</p>
-      </div>
-      <div class="kbd-grid">
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span><span>Command bar</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>T</kbd></span><span>New tab</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>T</kbd></span><span>Reopen closed tab</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>F</kbd></span><span>Find in page</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>S</kbd></span><span>Split screen</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd></span><span>Picture-in-picture</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>N</kbd></span><span>Notes</span></div>
-        <div class="kbd-row"><span class="kbd-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>Z</kbd></span><span>Sleep current tab</span></div>
+        <p class="sub"><span id="latest">Latest: v37.26.6</span> · <a href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener" data-i="get.all">All releases</a></p>
       </div>
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="footer-inner">
-      <a class="brand" href="#top" aria-label="Vex home">
-        <svg class="brand-mark" viewBox="0 0 80 80" aria-hidden="true">
-          <polygon points="40,12 68,40 40,68 12,40" fill="#d4a574" fill-opacity="0.4" stroke="#d4a574" stroke-width="1.4" stroke-opacity="0.8"/>
-          <path d="M26 38 L40 56 L54 38" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="brand-name">Vex</span>
-      </a>
-      <p class="footer-tag">A browser built just for you.</p>
-      <nav class="footer-links" aria-label="Footer">
+    <div class="foot-grid">
+      <p class="foot-tag" data-i="foot.tag">A browser built just for you.</p>
+      <nav aria-label="Project">
         <a href="https://github.com/0xmortuex/Vex" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener">Releases</a>
-        <a href="https://github.com/0xmortuex/Vex/issues" target="_blank" rel="noopener">Report an issue</a>
+        <a href="https://github.com/0xmortuex/Vex/releases" target="_blank" rel="noopener" data-i="foot.releases">Releases</a>
+        <a href="https://github.com/0xmortuex/Vex/issues" target="_blank" rel="noopener" data-i="foot.issues">Report a problem</a>
       </nav>
-      <nav class="footer-links" aria-label="Legal">
-        <a href="https://github.com/0xmortuex/Vex/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
-        <a href="https://github.com/0xmortuex/Vex/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a>
-        <a href="https://github.com/0xmortuex/Vex/blob/main/TERMS.md" target="_blank" rel="noopener">Terms</a>
-        <a href="https://github.com/0xmortuex/Vex/blob/main/THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener">Third-party notices</a>
+      <nav aria-label="Legal">
+        <a href="https://github.com/0xmortuex/Vex/blob/main/LICENSE" target="_blank" rel="noopener" data-i="foot.license">Licence</a>
+        <a href="https://github.com/0xmortuex/Vex/blob/main/PRIVACY.md" target="_blank" rel="noopener" data-i="foot.privacy">Privacy</a>
+        <a href="https://github.com/0xmortuex/Vex/blob/main/TERMS.md" target="_blank" rel="noopener" data-i="foot.terms">Terms</a>
+        <a href="https://github.com/0xmortuex/Vex/blob/main/THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener" data-i="foot.notices">Third-party notices</a>
       </nav>
-      <p class="footer-legal">No analytics, no telemetry. Sync and AI are self-hosted and off by default.</p>
-      <p class="footer-legal">Built by <strong>0xmortuex</strong> · MIT License · <span id="year"></span></p>
     </div>
+    <p class="legal"><span data-i="foot.legal">Built by 0xmortuex. MIT licence.</span> <span id="year"></span></p>
   </footer>
 
   <script src="script.js"></script>
