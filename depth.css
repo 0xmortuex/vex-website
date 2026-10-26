@@ -1,0 +1,185 @@
+/* Depth: the 3D of the Vex site.
+   Two kinds of rules live here.
+   1. Still depth, for everyone: extruded step numbers, key-cap buttons, shaded cards. Nothing here moves.
+   2. Motion, switched on by depth.js with html.d3 and only when the visitor has not asked for reduced motion:
+      a hero window that tilts, a scene of floating cards and crystals behind the page, sections and cards that rise out of the
+      distance, a crystal that turns. Everything that is only decoration is aria-hidden and takes no clicks. */
+
+:root {
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --gem-a: var(--bronze-fill);
+  --gem-b: var(--teal);
+}
+
+/* ---------- still depth ---------- */
+.btn {
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--bronze-fill) 60%, #000), 0 14px 22px -12px color-mix(in srgb, var(--bronze-fill) 75%, transparent);
+}
+.btn:hover { box-shadow: 0 4px 0 color-mix(in srgb, var(--bronze-fill) 60%, #000), 0 18px 26px -12px color-mix(in srgb, var(--bronze-fill) 75%, transparent); }
+.btn:active { transform: translateY(3px); box-shadow: 0 0 0 color-mix(in srgb, var(--bronze-fill) 60%, #000), 0 6px 12px -8px color-mix(in srgb, var(--bronze-fill) 75%, transparent); transition-duration: .05s; }
+.btn-ghost { box-shadow: 0 3px 0 var(--rule); }
+.btn-ghost:hover { box-shadow: 0 4px 0 var(--rule); }
+.btn-ghost:active { box-shadow: 0 0 0 var(--rule); }
+.btn-sm { box-shadow: 0 2px 0 color-mix(in srgb, var(--bronze-fill) 60%, #000); }
+
+/* the step numbers are solid blocks with a depth */
+.steps li::before {
+  text-shadow:
+    1px 1px 0 color-mix(in srgb, var(--bronze) 86%, #000),
+    2px 2px 0 color-mix(in srgb, var(--bronze) 76%, #000),
+    3px 3px 0 color-mix(in srgb, var(--bronze) 66%, #000),
+    4px 4px 0 color-mix(in srgb, var(--bronze) 56%, #000),
+    5px 5px 0 color-mix(in srgb, var(--bronze) 46%, #000),
+    6px 6px 0 color-mix(in srgb, var(--bronze) 38%, #000),
+    8px 12px 16px color-mix(in srgb, var(--ink) 28%, transparent);
+}
+
+/* what is inside: each fact is a card with an edge you can see */
+.facts { gap: 18px 22px; }
+.facts li {
+  max-width: none; padding: 18px 20px 20px; border: 1px solid var(--rule); border-radius: var(--radius);
+  background: color-mix(in srgb, var(--paper-2) 55%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent), 0 14px 26px -20px color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.qa details { transition: background .2s ease; }
+
+.get { position: relative; }
+
+/* ---------- the window in the hero ---------- */
+.win3d { position: relative; }
+.win-turn { position: relative; }
+.chip { display: none; }
+.scene, .get-gem { display: none; }
+
+/* ---------- the crystal: an octahedron of eight faces ---------- */
+.crystal { --r: 60px; --c1: var(--gem-a); position: relative; width: calc(var(--r) * 2); height: calc(var(--r) * 2); transform-style: preserve-3d; }
+.crystal i {
+  position: absolute; left: 50%; top: 50%;
+  width: calc(var(--r) * 1.4142); height: calc(var(--r) * 1.2247);
+  margin-left: calc(var(--r) * -0.7071); margin-top: calc(var(--r) * -0.8165);
+  transform-origin: 50% 66.667%;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  backface-visibility: hidden;
+  background: linear-gradient(165deg, color-mix(in srgb, var(--c1) 70%, #fff), color-mix(in srgb, var(--c1) 80%, #000));
+  filter: brightness(var(--sh, 1));
+  opacity: var(--o, .95);
+  transform: rotateY(var(--a)) rotateX(var(--b)) translateZ(calc(var(--r) * .5774)) rotateZ(var(--z, 0deg));
+}
+.crystal.teal { --c1: var(--gem-b); }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.d3 .stage { perspective: 1500px; perspective-origin: 50% 40%; }
+  html.d3 .win3d {
+    transform-style: preserve-3d; will-change: transform;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  }
+  html.d3 .win3d::before {
+    content: ''; position: absolute; left: 6%; right: 6%; bottom: -34px; height: 46px; pointer-events: none;
+    background: radial-gradient(closest-side, color-mix(in srgb, #000 42%, transparent), transparent);
+    filter: blur(8px); transform: translateZ(-70px);
+  }
+  html.d3 .win-turn { transform-style: preserve-3d; }
+  html.d3 .win-turn.turning { animation: lookturn .65s var(--ease); }
+  @keyframes lookturn {
+    0% { transform: rotateY(-78deg) scale(.95); opacity: .15; }
+    55% { opacity: 1; }
+    100% { transform: none; opacity: 1; }
+  }
+  html.d3 .win { position: relative; }
+  html.d3 .win::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, .26), transparent 46%);
+    mix-blend-mode: soft-light;
+  }
+
+  html.d3 .chip {
+    display: grid; place-items: center; position: absolute; width: clamp(34px, 5.2vw, 56px); aspect-ratio: 1; border-radius: 16px;
+    background: color-mix(in srgb, var(--paper) 92%, transparent); color: var(--bronze);
+    border: 1px solid var(--rule); pointer-events: none;
+    box-shadow: 0 20px 32px -12px color-mix(in srgb, #000 40%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 55%, transparent);
+    transform: translateZ(var(--z)); animation: chipfloat var(--dur, 6s) ease-in-out var(--delay, 0s) infinite alternate;
+  }
+  html.d3 body { overflow-x: clip; }
+  html.d3 .chip svg { width: 52%; height: 52%; }
+  html.d3 .chip.teal { color: var(--teal); }
+  @keyframes chipfloat {
+    from { transform: translateZ(var(--z)) translateY(0) rotateZ(-3deg); }
+    to { transform: translateZ(calc(var(--z) + 18px)) translateY(-10px) rotateZ(3deg); }
+  }
+
+  /* the scene behind the page */
+  html.d3 .scene { display: block; position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; perspective: 1100px; perspective-origin: 50% 35%; }
+  html.d3 .sh {
+    position: absolute; left: var(--l); top: var(--t); transform-style: preserve-3d; will-change: transform;
+    transform: translate3d(calc(var(--px, 0) * var(--par, 20px)), calc(var(--py, 0) * var(--par, 20px) + var(--sy, 0px) * var(--sp, -.1)), var(--z, 0px));
+  }
+  html.d3 .sh .fl { transform-style: preserve-3d; animation: drift var(--dur, 14s) ease-in-out var(--delay, 0s) infinite alternate; }
+  @keyframes drift {
+    from { transform: translate3d(0, 0, 0) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotateZ(var(--rz, 0deg)); }
+    to { transform: translate3d(var(--dx, 24px), var(--dy, -30px), 0) rotateX(calc(var(--rx, 0deg) + 16deg)) rotateY(calc(var(--ry, 0deg) - 22deg)) rotateZ(calc(var(--rz, 0deg) + 7deg)); }
+  }
+  html.d3 .sh-card .fl {
+    transform-style: flat; width: 250px; height: 156px; border-radius: 16px; opacity: var(--o, .5);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--paper) 70%, var(--bronze-fill)), color-mix(in srgb, var(--paper-2) 88%, var(--teal)));
+    border: 1px solid color-mix(in srgb, var(--bronze-fill) 40%, var(--rule));
+    box-shadow: 0 30px 50px -22px color-mix(in srgb, #000 45%, transparent);
+  }
+  html.d3 .sh-card .fl::before { content: ''; position: absolute; left: 12px; right: 12px; top: 12px; height: 24px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 9%, transparent); }
+  html.d3 .sh-card .fl::after { content: ''; position: absolute; left: 14px; top: 52px; width: 56%; height: 10px; border-radius: 5px; background: color-mix(in srgb, var(--ink) 11%, transparent); box-shadow: 0 22px 0 color-mix(in srgb, var(--ink) 8%, transparent), 0 44px 0 -2px color-mix(in srgb, var(--ink) 6%, transparent); }
+  html.d3 .sh .crystal { animation: drift var(--dur, 18s) ease-in-out var(--delay, 0s) infinite alternate; }
+
+  /* sections and cards rise out of the distance */
+  html.d3 .rise {
+    opacity: 0; transform: perspective(1100px) translate3d(0, 46px, -150px) rotateX(13deg); transform-origin: 50% 0;
+    transition: opacity .8s var(--ease), transform .95s var(--ease);
+  }
+  html.d3 .rise.in { opacity: 1; transform: none; }
+  html.d3 .rise:not(.in) :is(.facts li, .steps li, .qa details) { opacity: 0; }
+  html.d3 .rise.in :is(.facts li, .steps li, .qa details) { animation: itemin .8s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 75ms + 160ms); }
+  html.d3 .panel:not([hidden]) .facts li { animation: itemin .6s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+  @keyframes itemin {
+    from { opacity: 0; transform: perspective(900px) translate3d(0, 28px, -70px) rotateX(18deg); }
+    to { opacity: 1; transform: perspective(900px) none; }
+  }
+  :is(.facts li, .steps li, .qa details):nth-child(1) { --i: 0; }
+  :is(.facts li, .steps li, .qa details):nth-child(2) { --i: 1; }
+  :is(.facts li, .steps li, .qa details):nth-child(3) { --i: 2; }
+  :is(.facts li, .steps li, .qa details):nth-child(4) { --i: 3; }
+  :is(.facts li, .steps li, .qa details):nth-child(5) { --i: 4; }
+  :is(.facts li, .steps li, .qa details):nth-child(6) { --i: 5; }
+  :is(.facts li, .steps li, .qa details):nth-child(7) { --i: 6; }
+  :is(.facts li, .steps li, .qa details):nth-child(8) { --i: 7; }
+
+  /* a card turns toward the pointer */
+  html.d3 :is(.facts li, .steps li) {
+    transform: perspective(800px) translateZ(var(--lz, 0px)) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
+    transition: transform .25s var(--ease), box-shadow .25s ease;
+  }
+  html.d3 .facts li.hot { --lz: 14px; box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent), 0 30px 44px -22px color-mix(in srgb, var(--ink) 60%, transparent); }
+  html.d3 .steps li.hot { --lz: 10px; }
+
+  /* the crystal beside the download button */
+  html.d3 .get-gem { display: block; position: absolute; left: 50%; top: 50%; width: 150px; height: 150px; margin: -75px 0 0 -75px; pointer-events: none; perspective: 700px; }
+  html.d3 .get-gem .crystal { --r: 52px; position: absolute; left: 50%; top: 50%; margin: -52px 0 0 -52px; animation: gemspin 15s linear infinite; }
+  html.d3 .get-gem::after { content: ''; position: absolute; left: 22%; right: 22%; bottom: -6px; height: 22px; background: radial-gradient(closest-side, color-mix(in srgb, #000 32%, transparent), transparent); filter: blur(6px); }
+  @keyframes gemspin {
+    from { transform: rotateX(-20deg) rotateY(0deg); }
+    to { transform: rotateX(-20deg) rotateY(360deg); }
+  }
+
+  html.d3-paused :is(.scene *, .crystal, .chip, .win-turn) { animation-play-state: paused !important; }
+}
+
+/* a visitor who turns reduced motion on while the page is open: the extras go, the page stays */
+@media (prefers-reduced-motion: reduce) {
+  .scene, .get-gem, .chip { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  html.d3 .get-gem { display: none; }
+}
+@media (max-width: 700px) {
+  html.d3 .sh.hide-sm { display: none; }
+  html.d3 .chip { width: 34px; }
+}
